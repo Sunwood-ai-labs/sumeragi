@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 角を丸めた背景 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a6baf" stop-opacity="1">
+        <animate attributeName="stop-color" values="#4a6baf;#5f4b8b;#4a6baf" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#1a2980" stop-opacity="1">
+        <animate attributeName="stop-color" values="#1a2980;#26d0ce;#1a2980" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- 角を丸めた背景 -->
+  <rect x="10" y="10" width="780" height="180" rx="20" ry="20" fill="url(#bg-gradient)">
+    <animate attributeName="rx" values="20;25;20" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="ry" values="20;25;20" dur="8s" repeatCount="indefinite" />
+  </rect>
+  
+  <!-- SUMERAGI テキスト -->
+  <text x="400" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" filter="url(#glow)">
+    S.U.M.E.R.A.G.I.
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+  </text>
+  
+  <!-- 説明テキスト -->
+  <text x="400" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.9)">
+    Synergetic Unified Machine-learning Education Resource for Artificial General Intelligence
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite" />
+  </text>
+  
+  <!-- 飾り図形 -->
+  <g transform="translate(400, 100)" filter="url(#glow)">
+    <circle cx="-320" cy="0" r="8" fill="rgba(255,255,255,0.8)">
+      <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="320" cy="0" r="8" fill="rgba(255,255,255,0.8)">
+      <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- 下部の標語 -->
+  <text x="400" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-style="italic" fill="rgba(255,255,255,0.7)">
+    "Advancing AI Education Through Community Synergy"
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="5s" repeatCount="indefinite" />
+  </text>
+</svg>
