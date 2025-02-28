@@ -1,8 +1,9 @@
 
 <div align="center">
-  <img src="./assets/header.svg" alt="S.U.M.E.R.A.G.I. - Synergetic Unified Machine-learning Education Resource for Artificial General Intelligence">
 
-  # S.U.M.E.R.A.G.I.
+![Image](https://github.com/user-attachments/assets/ba8d39fd-49e6-4d15-b739-75c97b62d4cc)
+
+# S.U.M.E.R.A.G.I.
 
 </div>
 
