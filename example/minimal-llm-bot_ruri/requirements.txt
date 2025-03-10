@@ -1,0 +1,9 @@
+discord.py==2.3.2
+python-dotenv==1.0.0
+loguru==0.7.2
+litellm==1.20.0
+
+# 開発用パッケージ
+black==24.2.0  # コードフォーマッター
+flake8==7.0.0  # コードリンター
+pytest==8.0.2  # テストフレームワーク
