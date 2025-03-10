@@ -21,6 +21,33 @@ S.U.M.E.R.A.G.I.（スメラギ）は、AI学習コミュニティのためのDi
 - **G**eneral（汎用的な）：特定分野だけでなく幅広いAI技術や知識を扱う
 - **I**ntelligence（知能）：AIの「知能」という側面に焦点
 
+## 📂 リポジトリ構成
+
+このリポジトリは以下のディレクトリと内容で構成されています：
+
+```
+sumeragi/
+├── 📁 example/
+│   ├── 🤖 alpha-1/               # フル機能を備えたBot実装
+│   │   ├── 📄 bot.py              # メインのBot実装
+│   │   ├── 📄 event_manager.py    # イベント管理モジュール
+│   │   ├── 📄 resource_manager.py  # リソース管理モジュール
+│   │   ├── 📄 run.py              # Botの起動スクリプト
+│   │   └── 📄 requirements.txt     # 依存パッケージ
+│   │
+│   ├── 🔄 echo-bot/              # シンプルなオウム返しBot
+│   │   ├── 📄 bot.py              # メインのBot実装
+│   │   └── 📄 requirements.txt     # 依存パッケージ
+│   │
+│   └── 💭 minimal-llm-bot_ruri/  # LiteLLMを使用したAIチャットBot
+│       ├── 📁 src/                # ソースコード
+│       ├── 📁 prompts/            # プロンプトテンプレート
+│       ├── 📄 bot.py              # エントリーポイント
+│       └── 📄 requirements.txt     # 依存パッケージ
+│
+└── 📄 README.md                   # プロジェクト説明
+```
+
 ## 📂 実装例
 
 このリポジトリには以下のDiscord Bot実装例が含まれています：
