@@ -13,6 +13,7 @@ import sys
 from loguru import logger
 import discord
 from discord.ext import commands
+from distutils.util import strtobool
 from dotenv import load_dotenv
 
 # ロギングの設定
@@ -70,6 +71,8 @@ async def on_message(message):
         # メンション以外のメッセージ内容を取得
         # ユーザーメンション (<@123456789>) を除去
         content = message.content
+        use_thread = bool(strtobool(os.getenv('USE_THREAD_REPLY', 'false')))
+        
         for mention in message.mentions:
             content = content.replace(f'<@{mention.id}>', '').replace(f'<@!{mention.id}>', '')
         
@@ -79,13 +82,32 @@ async def on_message(message):
         # 内容が空でなければメッセージを送信
         if content:
             try:
-                await message.reply(content)
-                logger.info(f'メッセージを返信しました: {content}')
+                if use_thread:
+                    # スレッドが存在しない場合は新規作成
+                    if not isinstance(message.channel, discord.Thread):
+                        thread = await message.create_thread(
+                            name=f"Echo: {content[:50]}",  # スレッド名は最初の50文字を使用
+                            auto_archive_duration=60  # 60分で自動アーカイブ
+                        )
+                        await thread.send(content)
+                        logger.info(f'新しいスレッドを作成し、メッセージを送信しました: {content}')
+                    else:
+                        # 既存のスレッド内での返信
+                        await message.channel.send(content)
+                        logger.info(f'既存のスレッドにメッセージを送信しました: {content}')
+                else:
+                    # 通常の返信
+                    await message.reply(content)
+                    logger.info(f'メッセージを返信しました: {content}')
             except Exception as e:
-                logger.error(f'メッセージ返信中にエラーが発生しました: {e}')
-                await message.channel.send('メッセージの返信中にエラーが発生しました。')
+                error_msg = f'メッセージ返信中にエラーが発生しました: {e}'
+                logger.error(error_msg)
+                try:
+                    await message.channel.send('メッセージの返信中にエラーが発生しました。')
+                except:
+                    logger.error('エラーメッセージの送信にも失敗しました。')
         else:
-            await message.reply('こんにちは！メッセージを送ってくれればオウム返しします。')
+            await message.reply('こんにちは！メッセージを送ってくれればオウム返しします。' + (' (スレッドモード有効)' if use_thread else ''))
     
     # コマンド処理を行う（ボットのコマンドを追加する場合に必要）
     await bot.process_commands(message)
