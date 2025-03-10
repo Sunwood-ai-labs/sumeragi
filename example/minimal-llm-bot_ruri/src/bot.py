@@ -53,7 +53,7 @@ class RuriBot:
             log.info(f'{self.bot.user.name} としてログインしました')
             activity = discord.Activity(
                 type=discord.ActivityType.listening,
-                name=f"質問 ({self.config.model_name})"
+                name=f"質問受付中...  ({self.config.model_name})"
             )
             await self.bot.change_presence(activity=activity)
 
