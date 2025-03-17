@@ -52,3 +52,4 @@ repository_summary.md
 venv
 .venv
 
+workspace/
