@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: minimal-open-manus
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/OpenManus/config
+      - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Tokyo
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
