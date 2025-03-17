@@ -169,3 +169,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+**/.SourceSageAssets/
+*.zip
+example/minimal-open-manus/workspace/

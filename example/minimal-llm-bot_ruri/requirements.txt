@@ -1,0 +1,9 @@
+discord.py
+python-dotenv
+loguru
+litellm
+
+# 開発用パッケージ
+black
+flake8
+pytest
