@@ -1,6 +1,6 @@
 <div align="center">
 
-![OpenManus](assets/header.svg)
+![Image](https://github.com/user-attachments/assets/611f47ae-1b4e-43ef-bf65-b72ea32ce1a2)
 
 # 🤖 minimal-open-manus FUMIZUKI
 
