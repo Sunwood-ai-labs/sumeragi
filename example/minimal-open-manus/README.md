@@ -1,8 +1,8 @@
 <div align="center">
 
-![Image](https://github.com/user-attachments/assets/40ba8905-a516-4088-ab39-bdac14783f71)
+![Image](https://github.com/user-attachments/assets/800eff14-5be5-4651-b664-cea59c893b70)
 
-# 🤖 Echo Bot
+# 🤖 minimal-open-manus FUMIZUKI
 
 </div>
 
