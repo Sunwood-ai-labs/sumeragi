@@ -1,14 +1,15 @@
 version: '3.8'
 
 services:
-  ruri-bot:
+  bot:
     build: .
-    container_name: ruri-discord-bot
-    restart: always
+    container_name: minimal-open-manus
+    restart: unless-stopped
     volumes:
+      - ./config:/app/OpenManus/config
       - ./logs:/app/logs
-      - ./prompts:/app/prompts
     environment:
       - TZ=Asia/Tokyo
+      - PYTHONUNBUFFERED=1
     env_file:
       - .env

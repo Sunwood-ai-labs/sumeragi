@@ -12,7 +12,8 @@ RUN apt-get update && \
 COPY requirements.txt .
 
 # 依存関係のインストール
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir setuptools
+RUN pip install --no-cache-dir -r requirements.txt -U
 
 # アプリケーションファイルをコピー
 COPY . .

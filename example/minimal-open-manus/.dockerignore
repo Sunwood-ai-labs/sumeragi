@@ -1,0 +1,35 @@
+# バージョン管理
+.git
+.gitignore
+
+# Python関連
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+venv/
+ENV/
+
+# ログファイル
+logs/
+*.log
+*.log.*
+
+# 開発環境関連
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker関連
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# その他
+.DS_Store
+*.zip
+*.tar.gz

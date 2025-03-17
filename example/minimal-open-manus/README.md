@@ -1,43 +1,70 @@
 <div align="center">
 
-![Image](https://github.com/user-attachments/assets/800eff14-5be5-4651-b664-cea59c893b70)
+![OpenManus](assets/header.svg)
 
 # 🤖 minimal-open-manus FUMIZUKI
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
+[![discord.py](https://img.shields.io/badge/discord.py-Latest-blue?logo=discord)](https://discordpy.readthedocs.io/)
+[![OpenManus](https://img.shields.io/badge/OpenManus-Latest-green)](https://github.com/mannaandpoem/OpenManus)
+[![Docker](https://img.shields.io/badge/Docker-Supported-blue?logo=docker)](https://www.docker.com/)
 
 </div>
 
 ## 📝 概要
 
-Echo Botは、メンションを受け取るとそのメッセージを返信するシンプルなDiscord Botです。このボットはDiscordサーバー内でのコミュニケーションを確認するための最小構成の実装例となっています。
+minimal-open-manusは、OpenManusエージェントを利用したDiscordボットの最小構成実装です。メンションを受け取ると、OpenManusエージェントに問い合わせて結果を返信します。
 
 ## ✨ 機能
 
-- メンションを含むメッセージを受信すると、その内容をそのままオウム返しします
+- OpenManusエージェントによる高度な対話処理
+- メンションに対するスレッド形式での応答
 - ボットのステータス設定
 - シンプルなエラーハンドリング
 - loguruを使用した高度なログ機能（コンソール出力とファイル出力）
 
-## 🛠️ 技術スタック
-
-- Python 3.8+
-- discord.py: Discord API操作用ライブラリ
-- dotenv: 環境変数管理
-- loguru: 高度なロギング機能
-
-## 📋 必要条件
+## 🛠️ 必要条件
 
 - Python 3.8以上
 - Discordアカウントとボットトークン
+- OpenManusのAPI設定
 
 ## 🚀 セットアップと実行方法
+
+### Dockerを使用する場合
 
 1. リポジトリをクローン
 ```bash
 git clone https://github.com/Sunwood-ai-labs/sumeragi.git
-cd sumeragi/example/echo-bot
+cd sumeragi/example/minimal-open-manus
 ```
 
-2. 仮想環境の作成と有効化（オプション）
+2. 環境変数の設定
+```bash
+cp .env.example .env
+# .envファイルを編集してDiscordトークンを設定
+```
+
+3. 設定ファイルの準備
+```bash
+cp config/config.example.toml config/config.toml
+# config/config.tomlを編集してLLMの設定を行う
+```
+
+4. Dockerコンテナの起動
+```bash
+docker-compose up --build -d
+```
+
+### 直接実行する場合
+
+1. リポジトリをクローン
+```bash
+git clone https://github.com/Sunwood-ai-labs/sumeragi.git
+cd sumeragi/example/minimal-open-manus
+```
+
+2. 仮想環境の作成と有効化（推奨）
 ```bash
 python -m venv venv
 # Windowsの場合
@@ -51,14 +78,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. `.env`ファイルの作成
+4. 環境変数の設定
 ```bash
 cp .env.example .env
+# .envファイルを編集してDiscordトークンを設定
 ```
 
-5. `.env`ファイルにDiscord Botトークンを設定
-```
-DISCORD_TOKEN=あなたのボットトークン
+5. 設定ファイルの準備
+```bash
+cp config/config.example.toml config/config.toml
+# config/config.tomlを編集してLLMの設定を行う
 ```
 
 6. ボットの起動
@@ -69,12 +98,19 @@ python bot.py
 ## 📚 使い方
 
 1. ボットをDiscordサーバーに招待します
-2. `@Echo Bot こんにちは`のようにボットにメンションを付けてメッセージを送信します
-3. ボットは「こんにちは」とオウム返しします
+2. `@FUMIZUKI こんにちは`のようにボットにメンションを付けてメッセージを送信します
+3. OpenManusエージェントが応答を生成し、必要に応じて新しいスレッドで返信します
 
-## 🔑 環境変数
+## 🔧 設定
 
-- `DISCORD_TOKEN`: Discord Botのトークン（必須）
+### 環境変数 (.env)
+- `DISCORD_TOKEN_FUMIZUKI`: Discord Botのトークン（必須）
+- `USE_THREAD_REPLY`: スレッドでの返信を有効にするかどうか（true/false）
+
+### OpenManus設定 (config/config.toml)
+- LLMの種類とパラメータ
+- APIキーと接続設定
+- その他のOpenManus固有の設定
 
 ## 📜 ライセンス
 
