@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 **/.SourceSageAssets/
 *.zip
+example/minimal-open-manus/workspace/

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- グラデーション設定 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6a11cb" stop-opacity="1">
+        <animate attributeName="stop-color" values="#6a11cb; #2575fc; #6a11cb" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#2575fc" stop-opacity="1">
+        <animate attributeName="stop-color" values="#2575fc; #6a11cb; #2575fc" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+  </defs>
+  
+  <!-- 角丸の背景 -->
+  <rect width="800" height="200" rx="20" ry="20" fill="url(#bgGradient)">
+    <animate attributeName="rx" values="20;25;20" dur="5s" repeatCount="indefinite" />
+  </rect>
+  
+  <!-- ボットのアイコン -->
+  <g transform="translate(120, 100)" fill="white">
+    <circle cx="0" cy="0" r="40" opacity="0.9">
+      <animate attributeName="r" values="40;42;40" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <rect x="-25" y="-15" width="50" height="30" rx="5" ry="5" fill="#2575fc" />
+    <circle cx="-15" cy="-5" r="5" fill="white" />
+    <circle cx="15" cy="-5" r="5" fill="white" />
+    <path d="M -10 10 Q 0 20 10 10" stroke="white" stroke-width="3" fill="none" />
+  </g>
+  
+  <!-- テキスト部分 -->
+  <text x="230" y="110" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
+    Echo Bot
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+  </text>
+  
+  <!-- サブタイトル -->
+  <text x="230" y="145" font-family="Arial, sans-serif" font-size="22" fill="white" opacity="0.9">
+    Simply Reflecting Your Words
+  </text>
+</svg>
