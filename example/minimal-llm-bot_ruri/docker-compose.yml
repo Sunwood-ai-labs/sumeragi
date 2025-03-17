@@ -8,7 +8,6 @@ services:
     volumes:
       - ./logs:/app/logs
       - ./prompts:/app/prompts
-      - ./.env:/app/.env
     environment:
       - TZ=Asia/Tokyo
     env_file:
