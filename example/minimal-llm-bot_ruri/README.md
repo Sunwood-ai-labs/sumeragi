@@ -1,4 +1,15 @@
+<div align="center">
+
+![Minimal LLM Bot RURI](assets/header.svg)
+
 # 🤖 Minimal llm bot RURI
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)](https://www.python.org/)
+[![Discord.py](https://img.shields.io/badge/Discord.py-2.3.2-blue?style=flat-square)](https://discordpy.readthedocs.io/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=flat-square)](https://www.docker.com/)
+
+</div>
 
 ## 📝 概要
 
@@ -21,26 +32,40 @@ minimal-llm-bot_ruriは、メンションを受け取るとLiteLLMを通じてGe
 - Gemini API: Google提供のAIモデル
 - dotenv: 環境変数管理
 - loguru: 高度なロギング機能
+- Docker: コンテナ化と自動デプロイメント
 
 ## 📋 必要条件
 
 - Python 3.8以上
 - Discordアカウントとボットトークン
 - Gemini APIキー（Google AI Studioから取得）
+- Docker（オプション）
 
 ## 📁 プロジェクト構成
 
 ```
 minimal-llm-bot_ruri/
-├── bot.py              # メインのボットコード
-├── requirements.txt    # 依存パッケージリスト
-├── .env.example        # 環境変数テンプレート
-├── .env                # 環境変数設定ファイル（Gitで管理しない）
-├── README.md           # プロジェクト説明書
-└── logs/               # ログファイル保存ディレクトリ
+├── src/                # ソースコードディレクトリ
+│   ├── __init__.py
+│   ├── bot.py         # メインのボット実装
+│   ├── config.py      # 設定管理
+│   ├── llm_handler.py # LLM処理
+│   └── logger.py      # ログ設定
+├── prompts/           # プロンプトテンプレート
+│   └── system.txt
+├── logs/             # ログファイル保存ディレクトリ
+├── bot.py            # エントリーポイント
+├── requirements.txt  # 依存パッケージリスト
+├── .env.example     # 環境変数テンプレート
+├── .env             # 環境変数設定（Gitで管理しない）
+├── Dockerfile       # Dockerイメージ定義
+├── docker-compose.yml # Docker Compose設定
+└── README.md        # プロジェクト説明書
 ```
 
 ## 🚀 セットアップと実行方法
+
+### 通常のセットアップ
 
 1. リポジトリをクローン
 ```bash
@@ -62,20 +87,29 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. `.env`ファイルの作成
+4. `.env`ファイルの設定
 ```bash
 cp .env.example .env
+# .envファイルを編集して必要な情報を設定
 ```
 
-5. `.env`ファイルに必要なトークンを設定
-```
-DISCORD_TOKEN=あなたのDiscordボットトークン
-GEMINI_API_KEY=あなたのGemini APIキー
-```
-
-6. ボットの起動
+5. ボットの起動
 ```bash
 python bot.py
+```
+
+### Dockerでの実行
+
+1. `.env`ファイルの設定（上記と同様）
+
+2. Dockerイメージのビルドと起動
+```bash
+docker-compose up --build -d
+```
+
+3. ログの確認
+```bash
+docker logs ruri-discord-bot -f
 ```
 
 ## 📚 使い方
@@ -88,13 +122,15 @@ python bot.py
 ## 🔧 カスタマイズ
 
 - `.env`ファイルを編集して、ボットの設定を変更できます
-- 他のLLMを使用したい場合は、`bot.py`内の`get_llm_response`関数を修正します
+- 他のLLMを使用したい場合は、`src/llm_handler.py`を修正します
 - loguruの設定を変更することで、ログの形式や保存方法をカスタマイズできます
 
 ## 🔑 環境変数
 
 - `DISCORD_TOKEN`: Discord Botのトークン（必須）
 - `GEMINI_API_KEY`: Gemini APIキー（必須）
+- `MODEL_NAME`: 使用するモデル名（デフォルト: gemini/gemini-pro）
+- `USE_THREAD_REPLY`: スレッドでの返信を有効にするか（デフォルト: true）
 
 ## 📜 ライセンス
 
@@ -102,6 +138,5 @@ python bot.py
 
 ## 🙏 謝辞
 
-- このプロジェクトは元のEcho Botをベースに拡張したものです
 - [LiteLLM](https://github.com/BerriAI/litellm)チームの素晴らしいライブラリに感謝します
 - Googleの[Gemini API](https://ai.google.dev/)を活用しています
